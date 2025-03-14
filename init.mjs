@@ -3,25 +3,100 @@ import sqlite from 'sqlite3';
 
 const db = new sqlite.Database('ourDb.sqlite', (err) => { if (err) throw err })
 "use strict";
+const sql = `
+CREATE TABLE IF NOT EXISTS foods (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    quantity INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS surpriseBags (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    foods TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS regularBags (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    foods TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS bags (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    bags TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS stores (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    address TEXT NOT NULL,
+    phoneNumber TEXT NOT NULL,
+    type TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    address TEXT NOT NULL,
+    phoneNumber TEXT NOT NULL,
+    username TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+`;
 function Food(name, quantity) {
     this.name = name;
     this.quantity = quantity;
-    this.addFoodToDb = function() {
-        db.run('INSERT INTO foods(name, quantity) VALUES(?, ?)', [this.name, this.quantity], (err) => { if (err) throw err });
-    }
-    this.removeFoodFromDb = function() {
-        db.run('DELETE FROM foods WHERE name = ?', [this.name], (err) => { if (err) throw err });
-    }
-    this.updateFoodInDb = function() {
-        db.run('UPDATE foods SET quantity = ? WHERE name = ?', [this.quantity, this.name], (err) => { if (err) throw err });
-    }
-    this.getFoodFromDb = function() {
-        db.get('SELECT * FROM foods WHERE name = ?', [this.name], (err, row) => {
-            if (err) throw err;
-            this.name = row.name;
-            this.quantity = row.quantity;
+    this.addFoodToDb = new Promise((resolve, reject) => {
+        db.run(sql, (err) => {
+            if (err) {
+                reject(err);
+            } else { 
+                resolve(db.run('INSERT INTO foods(name, quantity) VALUES(?, ?)', [this.name, this.quantity], (err) => { if (err) throw err }));
+            }
         });
-    }
+    });
+        
+        
+    
+    this.removeFoodFromDb = new Promise((resolve, reject) => {
+        db.run(sql, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(db.run('DELETE FROM foods WHERE name = ?', [this.name]));
+            }
+        });
+    });
+
+    this.updateFoodInDb = new Promise((resolve, reject) => {
+        db.run(sql, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(db.run('UPDATE foods SET quantity = ? WHERE name = ?', [this.quantity, this.name]));
+            }
+        });
+    });
+
+    this.getFoodFromDb = new Promise((resolve, reject) => {
+        db.run(sql, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(db.get('SELECT * FROM foods WHERE name = ?', [this.name], (err, row) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        if (row) {
+                            this.name = row.name;
+                            this.quantity = row.quantity;
+                        } else {
+                            reject(new Error('No food found with the given name'));
+                        }
+                    }
+                }));
+            }
+        });
+    });
 }
 
 function surpriseBag() {
@@ -216,11 +291,12 @@ var food2 = new Food('banana', 10);
 var food3 = new Food('orange', 15);
 var food4 = new Food('grape', 20);
 var surprisebag1 = new surpriseBag(food1);
-food1.addFoodToDb();
-food2.addFoodToDb();
-food3.addFoodToDb();
-food4.addFoodToDb();
+food1.addFoodToDb.catch(err => console.log(err));
+food2.addFoodToDb.catch(err => console.log(err));
+food3.addFoodToDb.catch(err => console.log(err));
+food4.addFoodToDb.catch(err => console.log(err));
 
+/*
 var surprisebag1 = new surpriseBag();
 surprisebag1.add(food1);
 surprisebag1.add(food2);
@@ -230,3 +306,4 @@ var regularBag1 = new regularBag();
 regularBag1.add(food3);
 regularBag1.add(food4);
 regularBag1.addBagToDb();
+*/
