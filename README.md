@@ -1,11 +1,11 @@
-# Group "GROUP NAME"
+# Group "Decepticons"
 
 ## Members
-- s123456 LASTNAME FIRSTNAME
-- s123456 LASTNAME FIRSTNAME
-- s123456 LASTNAME FIRSTNAME
+- s337492 AKARCAY KAAN RIZA
+- s338210 UNAL BARIS TAN 
 
-# Exercise "NAME OF EXERCISE"
+
+# Exercise "Rescuing Surplus Food"
 
 # Lab Journal
 
