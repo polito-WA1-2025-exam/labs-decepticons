@@ -1,5 +1,6 @@
 // for the first lab's content only
 import sqlite from "sqlite3";
+import express from "express";
 
 const db = new sqlite.Database("ourDb.sqlite", (err) => {
   if (err) throw err;
@@ -418,14 +419,160 @@ tableCreationPromise
   })
   .catch((err) => console.error("Error:", err));
 
-/*
-var surprisebag1 = new surpriseBag();
-surprisebag1.add(food1);
-surprisebag1.add(food2);
-surprisebag1.addBagToDb();
+const app = express();
+app.use(express.json()); // Middleware to parse JSON requests
 
-var regularBag1 = new regularBag();
-regularBag1.add(food3);
-regularBag1.add(food4);
-regularBag1.addBagToDb();
-*/
+// Retrieve the list of all items of the main collection (foods)
+app.get("/api/foods", (req, res) => {
+  db.all("SELECT * FROM foods", (err, rows) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(rows);
+  });
+});
+
+// Retrieve a list of items with specific characteristics (e.g., quantity > 0)
+app.get("/api/foods/filter", (req, res) => {
+  const { quantity } = req.query;
+  db.all(
+    "SELECT * FROM foods WHERE quantity > ?",
+    [quantity || 0],
+    (err, rows) => {
+      if (err) return res.status(500).json({ error: err.message });
+      res.json(rows);
+    }
+  );
+});
+
+// Retrieve a specific item by id
+app.get("/api/foods/:id", (req, res) => {
+  const { id } = req.params;
+  db.get("SELECT * FROM foods WHERE id = ?", [id], (err, row) => {
+    if (err) return res.status(500).json({ error: err.message });
+    if (!row) return res.status(404).json({ error: "Food not found" });
+    res.json(row);
+  });
+});
+
+// Create a new item
+app.post("/api/foods", (req, res) => {
+  const { name, quantity } = req.body;
+  if (!name || quantity == null)
+    return res.status(400).json({ error: "Invalid input" });
+  db.run(
+    "INSERT INTO foods (name, quantity) VALUES (?, ?)",
+    [name, quantity],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      res.status(201).json({ id: this.lastID, name, quantity });
+    }
+  );
+});
+
+// Update an existing item
+app.put("/api/foods/:id", (req, res) => {
+  const { id } = req.params;
+  const { name, quantity } = req.body;
+  if (!name || quantity == null)
+    return res.status(400).json({ error: "Invalid input" });
+  db.run(
+    "UPDATE foods SET name = ?, quantity = ? WHERE id = ?",
+    [name, quantity, id],
+    function (err) {
+      if (err) return res.status(500).json({ error: err.message });
+      if (this.changes === 0)
+        return res.status(404).json({ error: "Food not found" });
+      res.json({ id, name, quantity });
+    }
+  );
+});
+
+// Update specific attributes of a specific item
+app.patch("/api/foods/:id", (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+  const fields = Object.keys(updates)
+    .map((key) => `${key} = ?`)
+    .join(", ");
+  const values = [...Object.values(updates), id];
+  db.run(`UPDATE foods SET ${fields} WHERE id = ?`, values, function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    if (this.changes === 0)
+      return res.status(404).json({ error: "Food not found" });
+    res.json({ id, ...updates });
+  });
+});
+
+// Delete an existing item
+app.delete("/api/foods/:id", (req, res) => {
+  const { id } = req.params;
+  db.run("DELETE FROM foods WHERE id = ?", [id], function (err) {
+    if (err) return res.status(500).json({ error: err.message });
+    if (this.changes === 0)
+      return res.status(404).json({ error: "Food not found" });
+    res.status(204).end();
+  });
+});
+
+// Start the server
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
+// Test CRUD endpoints
+const testCRUD = async () => {
+  const baseUrl = "http://localhost:3000/api/foods";
+
+  try {
+    // Create a new food item
+    let response = await fetch(baseUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "banana", quantity: 10 }),
+    });
+    let data = await response.json();
+    console.log("Created:", data);
+
+    // Retrieve all food items
+    response = await fetch(baseUrl);
+    data = await response.json();
+    console.log("All Foods:", data);
+
+    // Retrieve a specific food item by ID
+    const foodId = data[0]?.id; // Assuming the first item exists
+    response = await fetch(`${baseUrl}/${foodId}`);
+    data = await response.json();
+    console.log("Retrieved Food:", data);
+
+    // Update the food item
+    response = await fetch(`${baseUrl}/${foodId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: "banana", quantity: 20 }),
+    });
+    data = await response.json();
+    console.log("Updated Food:", data);
+
+    // Partially update the food item
+    response = await fetch(`${baseUrl}/${foodId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quantity: 25 }),
+    });
+    data = await response.json();
+    console.log("Partially Updated Food:", data);
+
+    // Delete the food item
+    response = await fetch(`${baseUrl}/${foodId}`, { method: "DELETE" });
+    if (response.status === 204) console.log("Deleted Food:", foodId);
+
+    // Verify deletion
+    response = await fetch(`${baseUrl}/${foodId}`);
+    if (response.status === 404) console.log("Food not found after deletion");
+  } catch (error) {
+    console.error("Error during CRUD tests:", error);
+  }
+};
+
+// Run the test
+testCRUD();
