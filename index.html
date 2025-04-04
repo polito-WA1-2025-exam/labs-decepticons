@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Food - Reduce Waste</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-bag-heart-fill text-success"></i> SaveFood
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Stores</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-success rounded-pill ms-2">Download App</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-success text-white text-center py-5">
+        <div class="container">
+            <h1 class="display-4">Save Good Food From Going To Waste</h1>
+            <p class="lead">Rescue delicious surplus food from local stores at ½ price or less</p>
+            <button class="btn btn-light btn-lg mt-3 rounded-pill">Explore Food Bags</button>
+        </div>
+    </header>
+
+    <!-- How It Works Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">How It Works</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-search fs-4"></i>
+                            </div>
+                            <h5>Discover</h5>
+                            <p class="card-text">Find Surprise Bags from stores and restaurants near you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-credit-card fs-4"></i>
+                            </div>
+                            <h5>Reserve</h5>
+                            <p class="card-text">Confirm your choice, reserve your food, and pay through the app</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-shop fs-4"></i>
+                            </div>
+                            <h5>Pickup</h5>
+                            <p class="card-text">Head to the shop at the specified pickup time and enjoy your food</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <div class="rounded-circle bg-success text-white d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-globe fs-4"></i>
+                            </div>
+                            <h5>Save Food</h5>
+                            <p class="card-text">You've rescued good food from going to waste and helped the planet!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Available Food Bags Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Available Food Bags</h2>
+            <div class="row g-4">
+                <!-- Bakery Food Bag -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?auto=format&fit=crop&q=80&w=500" class="card-img-top" alt="Bakery Items">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white m-2 px-2 py-1 rounded-pill">
+                                50% OFF
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title m-0">Fresh Bakery Surprise</h5>
+                                <span class="badge bg-success"><i class="bi bi-star-fill"></i> 4.8</span>
+                            </div>
+                            <p class="card-text text-muted">Sunshine Bakery</p>
+                            <p class="card-text">A delicious mix of fresh bread, pastries and treats that would otherwise go to waste.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-success mb-0">
+                                        <i class="bi bi-geo-alt"></i> 0.8 miles away
+                                    </p>
+                                    <p class="text-muted small mb-0">Pickup: Today 17:00-18:00</p>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">$4.99</p>
+                                    <p class="text-muted text-decoration-line-through small mb-0">$9.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Café Food Bag -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2?auto=format&fit=crop&q=80&w=500" class="card-img-top" alt="Café Items">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white m-2 px-2 py-1 rounded-pill">
+                                60% OFF
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title m-0">Café Surprise Bag</h5>
+                                <span class="badge bg-success"><i class="bi bi-star-fill"></i> 4.6</span>
+                            </div>
+                            <p class="card-text text-muted">Morning Brew Café</p>
+                            <p class="card-text">A selection of sandwiches, pastries, and desserts from our daily menu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-success mb-0">
+                                        <i class="bi bi-geo-alt"></i> 1.2 miles away
+                                    </p>
+                                    <p class="text-muted small mb-0">Pickup: Today 18:30-19:30</p>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">$3.99</p>
+                                    <p class="text-muted text-decoration-line-through small mb-0">$9.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Restaurant Food Bag -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1579631542720-3a87824fff86?auto=format&fit=crop&q=80&w=500" class="card-img-top" alt="Restaurant Items">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white m-2 px-2 py-1 rounded-pill">
+                                55% OFF
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title m-0">Gourmet Dinner Box</h5>
+                                <span class="badge bg-success"><i class="bi bi-star-fill"></i> 4.9</span>
+                            </div>
+                            <p class="card-text text-muted">Green Garden Restaurant</p>
+                            <p class="card-text">Delicious vegetarian and vegan dishes from today's specials menu.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-success mb-0">
+                                        <i class="bi bi-geo-alt"></i> 0.5 miles away
+                                    </p>
+                                    <p class="text-muted small mb-0">Pickup: Today 20:00-21:00</p>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">$5.99</p>
+                                    <p class="text-muted text-decoration-line-through small mb-0">$12.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grocery Store Food Bag -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=500" class="card-img-top" alt="Grocery Items">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white m-2 px-2 py-1 rounded-pill">
+                                65% OFF
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title m-0">Fruit & Veg Box</h5>
+                                <span class="badge bg-success"><i class="bi bi-star-fill"></i> 4.7</span>
+                            </div>
+                            <p class="card-text text-muted">FreshMart Grocery</p>
+                            <p class="card-text">A selection of fresh fruits and vegetables that are still good to eat.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-success mb-0">
+                                        <i class="bi bi-geo-alt"></i> 1.5 miles away
+                                    </p>
+                                    <p class="text-muted small mb-0">Pickup: Tomorrow 11:00-12:00</p>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">$3.49</p>
+                                    <p class="text-muted text-decoration-line-through small mb-0">$9.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deli Food Bag -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1624935542156-8a0fd7cce8fa?auto=format&fit=crop&q=80&w=500" class="card-img-top" alt="Deli Items">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white m-2 px-2 py-1 rounded-pill">
+                                50% OFF
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title m-0">Deli Delight Bag</h5>
+                                <span class="badge bg-success"><i class="bi bi-star-fill"></i> 4.5</span>
+                            </div>
+                            <p class="card-text text-muted">City Deli & Market</p>
+                            <p class="card-text">A selection of cheeses, cold cuts, and prepared salads from our deli counter.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-success mb-0">
+                                        <i class="bi bi-geo-alt"></i> 0.9 miles away
+                                    </p>
+                                    <p class="text-muted small mb-0">Pickup: Tomorrow 16:00-17:00</p>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">$4.99</p>
+                                    <p class="text-muted text-decoration-line-through small mb-0">$9.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Juice Bar Food Bag -->
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="position-relative">
+                            <img src="https://images.unsplash.com/photo-1589733955941-5eeaf752f6dd?auto=format&fit=crop&q=80&w=500" class="card-img-top" alt="Juice Bar Items">
+                            <span class="position-absolute top-0 end-0 bg-danger text-white m-2 px-2 py-1 rounded-pill">
+                                55% OFF
+                            </span>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title m-0">Smoothie & Snack Box</h5>
+                                <span class="badge bg-success"><i class="bi bi-star-fill"></i> 4.3</span>
+                            </div>
+                            <p class="card-text text-muted">Fresh Squeeze Juice Bar</p>
+                            <p class="card-text">Fresh juices, smoothies and healthy snacks prepared today.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <p class="text-success mb-0">
+                                        <i class="bi bi-geo-alt"></i> 1.1 miles away
+                                    </p>
+                                    <p class="text-muted small mb-0">Pickup: Tomorrow 18:00-19:00</p>
+                                </div>
+                                <div>
+                                    <p class="fw-bold mb-0">$4.49</p>
+                                    <p class="text-muted text-decoration-line-through small mb-0">$9.99</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="btn btn-outline-success btn-lg rounded-pill">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental Impact Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Your Impact on the Environment</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card text-center h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-trash text-success display-4 mb-3"></i>
+                            <h3>1,234,567</h3>
+                            <h5 class="text-muted">Meals Saved</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-tree text-success display-4 mb-3"></i>
+                            <h3>3,086,417</h3>
+                            <h5 class="text-muted">kg CO₂e Saved</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-people text-success display-4 mb-3"></i>
+                            <h3>56,789</h3>
+                            <h5 class="text-muted">App Users</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5 class="mb-3">SaveFood</h5>
+                    <p>A social impact company on a mission to inspire and empower everyone to fight food waste together.</p>
+                    <div class="mt-3">
+                        <a href="#" class="text-white me-2"><i class="bi bi-facebook fs-5"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-twitter-x fs-5"></i></a>
+                        <a href="#" class="text-white me-2"><i class="bi bi-instagram fs-5"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-5"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">The App</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">How it Works</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Download</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Stores</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Cities</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5 class="mb-3">Company</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Careers</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Press</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Business Solutions</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">For Restaurants</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">For Bakeries</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">For Groceries</a></li>
+                        <li><a href="#" class="text-white text-decoration-none">Business Sign-up</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="small mb-md-0">© 2023 SaveFood. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-white text-decoration-none small me-3">Terms & Conditions</a>
+                    <a href="#" class="text-white text-decoration-none small me-3">Privacy Policy</a>
+                    <a href="#" class="text-white text-decoration-none small">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

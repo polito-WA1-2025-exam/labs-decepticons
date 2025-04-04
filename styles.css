@@ -1,0 +1,118 @@
+/* Custom styles for SaveFood website */
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Hero section styling */
+header.bg-success {
+    background: linear-gradient(135deg, #2ecc71, #27ae60) !important;
+    padding: 80px 0;
+}
+
+/* Card hover effects */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Card images */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Rounded buttons */
+.btn {
+    border-radius: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.btn-outline-success {
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+
+.btn-outline-success:hover {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+}
+
+/* Navbar brand */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Footer styling */
+footer {
+    background: linear-gradient(135deg, #232526, #414345) !important;
+}
+
+footer a:hover {
+    color: #2ecc71 !important;
+}
+
+/* Environmental impact section */
+.display-4 {
+    color: #2ecc71;
+}
+
+/* Custom badge styling */
+.badge.bg-success {
+    background-color: #2ecc71 !important;
+    font-weight: normal;
+    padding: 6px 10px;
+}
+
+/* Discount badge */
+.bg-danger {
+    background-color: #e74c3c !important;
+}
+
+/* How it works icons */
+.rounded-circle.bg-success {
+    background-color: #2ecc71 !important;
+    width: 70px !important;
+    height: 70px !important;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .rounded-circle.bg-success {
+    transform: scale(1.1);
+}
+
+/* Additional hover effects on links */
+a {
+    transition: color 0.3s ease;
+}
+
+/* Store name styling */
+.text-muted {
+    color: #7f8c8d !important;
+}
+
+/* Price styling */
+.fw-bold {
+    color: #27ae60;
+    font-size: 1.2rem;
+} 
